@@ -1,362 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Perfume by Haram</title>
-     <link rel="stylesheet" href="style.css">
-     
+    <title>lidfx - Fold & Blur Your Linux Desktop on Lid Close</title>
+    <meta name="description" content="Download lidfx, a GNOME Shell extension that elegantly folds and blurs your live Linux desktop when you close your laptop lid. Experience a smooth, visual transition powered by your device's accelerometer.">
+    <meta name="keywords" content="lidfx, gnome shell extension, linux desktop, laptop lid, fold blur, accelerometer, wayland, mutter, compositor, glsl, hid, ubuntu, linux download">
+    <meta name="author" content="Bambamo4561">
+    <meta property="og:title" content="lidfx - Fold & Blur Your Linux Desktop on Lid Close">
+    <meta property="og:description" content="Download lidfx, a GNOME Shell extension that elegantly folds and blurs your live Linux desktop when you close your laptop lid.">
+    <meta property="og:url" content="https://github.com/Bambamo4561/lidfx">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
 </head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #2d3748; line-height: 1.7;">
 
-<body>
-
-    <!-- Website Header -->
-
-    <header>
-
-        <h1>Perfume by Haram</h1>
-
-        <p>Luxury Fragrances for Every Moment</p>
-
-    </header>
-
-
-    <!-- Navigation -->
-
-    <nav>
-
-    <a href="#home">Home</a>
-
-    <a href="#collection">Collection</a>
-
-    <a href="#about">About</a>
-
-    </nav>
-
-
-    <!-- Home Section -->
-
-    <section id="home">
-
-        <h2>Discover Your Signature Scent</h2>
-
-        <p>
-            Welcome to Perfume by Haram.
-            Discover elegant and beautiful fragrances
-            created to make every moment memorable.
-        </p>
-
-      <button onclick="document.getElementById('collection').scrollIntoView({behavior: 'smooth'})">
-    Shop Now
-</button>
-
-    </section>
-
-
-    <!-- Collection -->
-<!-- Collection -->
-
-<section id="collection">
-
-    <h2>Our Collection</h2>
-
-    <div class="perfume-container">
-
-        <div class="perfume-card">
-
-            <img src="olive-blossom.jpg" alt="Olive Blossom Perfume">
-
-            <h3>Olive Blossom</h3>
-
-            <p>
-                A fresh and elegant floral fragrance inspired
-                by beautiful olive blossoms.
-            </p>
-
-            <p class="price">Rs. 3,500</p>
-
-            <button onclick="addToCart('Olive Blossom', 3500)">
-                Add to Cart
-            </button>
-
-        </div>
-
-
-        <div class="perfume-card">
-
-            <img src="green-elegance.jpg" alt="Green Elegance Perfume">
-
-            <h3>Green Elegance</h3>
-
-            <p>
-                A sophisticated woody and fresh fragrance
-                with a modern character.
-            </p>
-
-            <p class="price">Rs. 4,000</p>
-
-            <button onclick="addToCart('Green Elegance', 4000)">
-                Add to Cart
-            </button>
-
-        </div>
-
-
-        <div class="perfume-card">
-
-            <img src="velvet-bloom.jpg" alt="Velvet Bloom Perfume">
-
-            <h3>Velvet Bloom</h3>
-
-            <p>
-                A soft and luxurious floral fragrance with
-                sweet notes for special moments.
-            </p>
-
-            <p class="price">Rs. 4,500</p>
-
-            <button onclick="addToCart('Velvet Bloom', 4500)">
-                Add to Cart
-            </button>
-
-        </div>
-
+    <!-- Hero Section -->
+    <div style="background: #ffffff; padding: 60px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px;">
+        <h1 style="font-size: 3.2em; margin-bottom: 5px; color: #1a202c; letter-spacing: -1px;">✨ lidfx - Your Desktop, Folded Away Elegantly</h1>
+        <p style="font-size: 1.3em; color: #4a5568; max-width: 650px; margin: 15px auto 25px; font-weight: 300;">Transform your live Linux desktop into a folded, blurred masterpiece every time you close your laptop lid.</p>
+        <a href="https://github.com/Bambamo4561/lidfx" style="background: #ed8936; color: #ffffff; padding: 18px 45px; font-size: 1.4em; text-decoration: none; border-radius: 50px; box-shadow: 0 10px 25px rgba(237, 137, 54, 0.4); display: inline-block; font-weight: bold; transition: all 0.3s ease;">⬇️ Download lidfx Now</a>
     </div>
 
-</section>    
-    <!-- About -->
-<section id="about">
+    <!-- Main Container -->
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px 80px;">
 
-    <h2>About Perfume by Haram</h2>
-
-    <p class="about-intro">
-        Welcome to Perfume by Haram — a fragrance destination
-        created for people who believe that every scent tells
-        a story. Our collection brings together elegant,
-        refreshing and luxurious fragrances designed for
-+        different personalities and memorable moments.
-    </p>
-    <div class="about-container">
-
-        <div class="about-box">
-
-            <h3>🌿 Our Story</h3>
-
-            <p>
-                Perfume by Haram was created with a simple idea:
-                to make beautiful fragrances accessible to
-                everyone. We believe perfume is more than just
-                a fragrance — it is a part of your personality,
-                confidence and everyday experience.
-            </p>
-
-        </div>
- <div class="about-box">
-
-            <h3>✨ Our Collection</h3>
-
-            <p>
-                Our collection includes carefully presented
-                fragrances with different characters. From fresh
-                and floral scents to sophisticated and luxurious
-                aromas, there is something for every mood and
-                special occasion.
-            </p>
-
-        </div>
-<div class="about-box">
-
-            <h3>💚 Our Philosophy</h3>
-
-            <p>
-                We focus on elegance, simplicity and beautiful
-                presentation. Every fragrance is selected with
-                attention to its character so that your perfume
-                feels personal and special.
-            </p>
-
-        </div>
- <div class="about-box">
-
-            <h3>🌸 For Every Moment</h3>
-
-            <p>
-                Whether you are getting ready for work, meeting
-                friends, attending a special event or simply
-                enjoying your day, the right fragrance can make
-                the moment feel even more memorable.
-            </p>
-
+        <!-- What is lidfx -->
+        <div style="background: #ffffff; border-radius: 16px; padding: 40px 50px; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+            <h2 style="font-size: 2.2em; color: #1a202c; margin-top: 0; border-bottom: 3px solid #ed8936; padding-bottom: 15px; display: inline-block;">💡 What Is lidfx?</h2>
+            <p style="font-size: 1.15em; margin-top: 20px;">lidfx is a beautifully crafted extension for GNOME Shell (the interface on many Linux laptops) that gives you a visually stunning experience when you close your laptop's lid. As the lid lowers, your live desktop doesn't just turn off — it gracefully folds and blurs in a realistic, smooth animation. Think of it like a digital curtain falling away, powered by your computer's built-in motion sensor (accelerometer).</p>
+            <p style="font-size: 1.15em; margin-top: 15px;">Instead of a harsh cutoff or a blank screen, you'll see your windows and wallpaper softly fold downward while a gentle blur effect takes over, until the screen finally rests. It's a small touch that makes closing your laptop feel modern, polished, and incredibly satisfying.</p>
         </div>
 
-    </div>
-
-
-    <div class="about-values">
-
-        <h3>Why Choose Perfume by Haram?</h3>
-
-        <ul>
-
-            <li>🌿 Elegant and beautiful fragrances</li>
-
-            <li>✨ Carefully presented perfume collection</li>
-
-            <li>💚 Fragrances for different moods and occasions</li>
-
-            <li>🎁 Beautiful choices for gifting</li>
-
-            <li>💫 A simple and memorable shopping experience</li>
-
-        </ul>
-
-    </div>
-
-
-    <div class="about-message">
-
-        <h3>Find Your Signature Scent</h3>
-
-        <p>
-            Your fragrance should feel like you.
-            Explore our collection and discover a scent
-            that becomes part of your story.
-        </p>
-
-    </div>
-
-</section>
-<!-- =========================
-     SIGNATURE SCENT
-========================= -->
-
-<section id="signature">
-
-    <div class="signature-content">
-
-        <p class="signature-small">
-            YOUR FRAGRANCE • YOUR STORY
-        </p>
-
-        <h2>
-            Discover Your
-            <span>Signature Scent</span>
-        </h2>
-
-        <p class="signature-text">
-            A beautiful fragrance is more than a scent.
-            It becomes a part of your personality, your mood
-            and the memories you create.
-        </p>
-
-        <button onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
-            Explore Our Collection
-        </button>
-
-    </div>
-
-    <div class="signature-decoration">
-
-        <div class="gold-circle"></div>
-
-        <div class="floating-flower flower-one">✦</div>
-
-        <div class="floating-flower flower-two">✧</div>
-
-        <div class="floating-flower flower-three">✦</div>
-
-    </div>
-
-</section>
-
-    <!-- Footer -->
-
-    <footer>
-
-        <h2>Perfume by Haram</h2>
-
-        <p>© 2026 Perfume by Haram</p>
-
-    </footer>
-    <!-- CART / ORDER INFORMATION -->
-
-<div id="cartPopup" class="order-overlay">
-
-    <div class="order-box">
-
-        <button class="close-cart" onclick="closeCart()">×</button>
-
-        <h2>🛒 Order Information</h2>
-
-        <div id="cartItems"></div>
-
-        <div class="cart-total">
-            <strong>Total:</strong>
-            <span id="cartTotal">Rs. 0</span>
+        <!-- Who is it for -->
+        <div style="background: #ffffff; border-radius: 16px; padding: 40px 50px; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+            <h2 style="font-size: 2.2em; color: #1a202c; margin-top: 0; border-bottom: 3px solid #ed8936; padding-bottom: 15px; display: inline-block;">🎯 Who Should Use lidfx?</h2>
+            <p style="font-size: 1.15em; margin-top: 20px;">This extension is perfect for:</p>
+            <ul style="font-size: 1.15em; margin-left: 20px; padding-left: 0; list-style-type: none;">
+                <li style="margin-bottom: 12px;">🖥️ <strong>Linux enthusiasts</strong> who love tweaking their desktop environment.</li>
+                <li style="margin-bottom: 12px;">💼 <strong>Professionals</strong> who want a touch of elegance in their daily workflow.</li>
+                <li style="margin-bottom: 12px;">🎨 <strong>Creative users</strong> who appreciate thoughtful visual design and smooth animations.</li>
+                <li style="margin-bottom: 12px;">🚀 <strong>Early adopters</strong> using Ubuntu or other GNOME-based Linux distributions with Wayland.</li>
+            </ul>
         </div>
 
-        <hr>
+        <!-- Key Features -->
+        <div style="background: #ffffff; border-radius: 16px; padding: 40px 50px; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+            <h2 style="font-size: 2.2em; color: #1a202c; margin-top: 0; border-bottom: 3px solid #ed8936; padding-bottom: 15px; display: inline-block;">⚙️ Key Features</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
+                <div style="background: #f7fafc; border-radius: 12px; padding: 25px;">
+                    <h3 style="font-size: 1.4em; margin-top: 0; color: #2d3748;">📐 Realistic Fold Effect</h3>
+                    <p style="font-size: 1.05em; margin-bottom: 0;">The desktop literally folds in half like paper, using GPU-accelerated GLSL shaders for a buttery-smooth visual illusion.</p>
+                </div>
+                <div style="background: #f7fafc; border-radius: 12px; padding: 25px;">
+                    <h3 style="font-size: 1.4em; margin-top: 0; color: #2d3748;">🌫️ Dynamic Blur</h3>
+                    <p style="font-size: 1.05em; margin-bottom: 0;">A high-quality blur effect kicks in as the lid closes, creating a soft, dreamy transition that looks natural and refined.</p>
+                </div>
+                <div style="background: #f7fafc; border-radius: 12px; padding: 25px;">
+                    <h3 style="font-size: 1.4em; margin-top: 0; color: #2d3748;">📡 Motion Sensing</h3>
+                    <p style="font-size: 1.05em; margin-bottom: 0;">Uses your laptop's HID accelerometer to detect the lid angle in real time, making the animation perfectly sync with your actual movement.</p>
+                </div>
+                <div style="background: #f7fafc; border-radius: 12px; padding: 25px;">
+                    <h3 style="font-size: 1.4em; margin-top: 0; color: #2d3748;">🔧 Seamless Integration</h3>
+                    <p style="font-size: 1.05em; margin-bottom: 0;">Sits right inside the GNOME Shell compositor (Mutter) for minimal performance impact and native-feeling behavior on Wayland.</p>
+                </div>
+            </div>
+        </div>
 
-        <h3>Customer Details</h3>
+        <!-- System Requirements -->
+        <div style="background: #ffffff; border-radius: 16px; padding: 40px 50px; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+            <h2 style="font-size: 2.2em; color: #1a202c; margin-top: 0; border-bottom: 3px solid #ed8936; padding-bottom: 15px; display: inline-block;">🖥️ What You Need</h2>
+            <p style="font-size: 1.15em; margin-top: 20px;">Before downloading, make sure your setup matches these requirements:</p>
+            <ul style="font-size: 1.15em; margin-top: 15px; list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 12px;">✅ A laptop running a modern <strong>Linux distribution</strong> (Ubuntu 22.04 or newer, Fedora 38+, or similar)</li>
+                <li style="margin-bottom: 12px;">✅ <strong>GNOME Shell</strong> version 42 or higher</li>
+                <li style="margin-bottom: 12px;">✅ Running on <strong>Wayland</strong> session (not X11)</li>
+                <li style="margin-bottom: 12px;">✅ A laptop with a built-in <strong>accelerometer</strong> (most modern ultrabooks and notebooks have one)</li>
+                <li style="margin-bottom: 12px;">✅ A GPU that supports <strong>OpenGL 3.3</strong> or higher (almost all integrated graphics since 2015 work fine)</li>
+            </ul>
+        </div>
 
-        <form onsubmit="placeOrder(event)">
+        <!-- Download & Setup -->
+        <div style="background: #ffffff; border-radius: 16px; padding: 40px 50px; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+            <h2 style="font-size: 2.2em; color: #1a202c; margin-top: 0; border-bottom: 3px solid #ed8936; padding-bottom: 15px; display: inline-block;">🚀 Getting Started</h2>
+            <p style="font-size: 1.25em; margin-top: 25px;"><strong>Step 1: Download the application</strong></p>
+            <p style="font-size: 1.15em; margin-top: 10px;">Visit this link to download the application:</p>
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://github.com/Bambamo4561/lidfx" style="background: #2b6cb0; color: white; padding: 18px 50px; font-size: 1.5em; text-decoration: none; border-radius: 50px; box-shadow: 0 8px 20px rgba(43, 108, 176, 0.3); display: inline-block; font-weight: bold;">📥 Get lidfx Here</a>
+            </div>
+            <p style="font-size: 1.15em; margin-top: 10px;">After clicking the button above, you'll land on the download page. Follow the instructions there to get the extension package saved to your computer.</p>
+            <p style="font-size: 1.25em; margin-top: 30px;"><strong>Step 2: Install the extension</strong></p>
+            <p style="font-size: 1.15em; margin-top: 10px;">Once downloaded, double-click the file to open it with the GNOME Extensions installer. A confirmation window will appear — click <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 5px; font-family: monospace;">Install</span> to complete the process.</p>
+            <p style="font-size: 1.25em; margin-top: 30px;"><strong>Step 3: Activate lidfx</strong></p>
+            <p style="font-size: 1.15em; margin-top: 10px;">After installation, open the <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 5px; font-family: monospace;">Extensions</span> app from your applications menu, find lidfx in the list, and flip the switch to turn it on. That's it! Now close your laptop lid and watch the magic happen.</p>
+        </div>
 
-            <label>Your Name</label>
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Enter your name"
-                required
-            >
+        <!-- Troubleshooting -->
+        <div style="background: #ffffff; border-radius: 16px; padding: 40px 50px; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+            <h2 style="font-size: 2.2em; color: #1a202c; margin-top: 0; border-bottom: 3px solid #ed8936; padding-bottom: 15px; display: inline-block;">🛠️ Common Issues & Tips</h2>
+            <ul style="font-size: 1.15em; margin-top: 20px; list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 15px;">🔹 <strong>No effect happening?</strong> Make sure you're on a Wayland session. Log out, click the gear icon on the login screen, and select "Ubuntu on Wayland."</li>
+                <li style="margin-bottom: 15px;">🔹 <strong>Animation feels janky?</strong> Check that your graphics drivers are up to date. On Ubuntu, run <span style="background: #e2e8f0; padding: 2px 8px; border-radius: 5px; font-family: monospace;">sudo ubuntu-drivers install</span> in a terminal.</li>
+                <li style="margin-bottom: 15px;">🔹 <strong>Accelerometer not detected?</strong> Some older laptops lack this sensor. lidfx gracefully falls back to a timed animation if no sensor is found, so you'll still get the effect.</li>
+            </ul>
+        </div>
 
-            <label>Phone / WhatsApp</label>
-            <input
-                type="tel"
-                id="customerPhone"
-                placeholder="03XX-XXXXXXX"
-                required
-            >
-            <label>Delivery Address</label> 
-<textarea 
-    id="customerAddress" 
-    placeholder="Enter your complete address" 
-    required
-></textarea>
+        <!-- Community & Support -->
+        <div style="background: #ffffff; border-radius: 16px; padding: 40px 50px; margin-bottom: 35px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+            <h2 style="font-size: 2.2em; color: #1a202c; margin-top: 0; border-bottom: 3px solid #ed8936; padding-bottom: 15px; display: inline-block;">💬 Get Help & Stay Connected</h2>
+            <p style="font-size: 1.15em; margin-top: 20px;">We're a community-driven project and love hearing from users! If you have questions, ideas, or encounter any issues, here's how to reach us:</p>
+            <ul style="font-size: 1.15em; margin-top: 15px; list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 12px;">📝 <strong>Report a bug:</strong> Visit the repository's Issues page and describe the problem — we usually respond within 48 hours.</li>
+                <li style="margin-bottom: 12px;">💡 <strong>Request a feature:</strong> Have an idea for a new visual effect? Open a discussion on the GitHub page.</li>
+                <li style="margin-bottom: 12px;">⭐ <strong>Show your support:</strong> If lidfx brings you joy, give the project a star on GitHub — it really helps us grow!</li>
+            </ul>
+        </div>
 
-            <label>Payment Method</label>
-
-<select id="paymentMethod" required>
-    <option value="">Select payment method</option>
-    <option value="Cash on Delivery">Cash on Delivery</option>
-    <option value="Bank Transfer">Bank Transfer</option>
-</select>
-<div id="bankDetails" style="display: none; margin-top: 15px; padding: 15px; background: #e8f1df; border-radius: 10px;">
-
-    <strong>Bank Transfer Details</strong>
-
-    <p>Account Name: Perfume by Haram</p>
-    <p>Bank: Your Bank Name</p>
-    <p>Account Number: YOUR ACCOUNT NUMBER</p>
-    <p>IBAN: YOUR IBAN</p>
-
-    <small>
-        Bank transfer karne ke baad transaction/reference number WhatsApp par send karein.
-    </small>
-
-</div>
-
-            <button type="submit" class="place-order">
-                Place Order
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js?v=2"></script>
-</body>
-</html>
+        <!-- Final CTA -->
+        <div style="background: #2d3748; border-radius: 16px; padding: 50px; text-align: center; color: white; box-shadow: 0 8px 30px rgba(0,0,0,0.2);">
+            <h2 style="font-size: 2.2em; margin-top: 0; color: #ffffff;">🌟 Ready to Transform Your Desktop?</h2>
+            <p style="font-size: 1.25em; margin-bottom: 30px; color: #e2e8f0;">Join hundreds of happy Linux users who made closing their laptop lid a delightful moment.</p>
+            <a href="https://github.com/Bambamo4561/lidfx" style="background: #ed8936; color: white; padding: 16px 45px; font-size: 1.3em; text-decoration: none; border-radius: 50px; box-shadow: 0 8px 20px rgba(237, 137, 54, 0.4); display: inline
