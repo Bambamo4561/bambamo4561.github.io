@@ -68,7 +68,6 @@ async function loginAdmin() {
 // ================================
 // LOAD ORDERS
 // ================================
-
 async function loadOrders() {
 
     const { data, error } =
@@ -118,7 +117,40 @@ async function loadOrders() {
 
                 <td>Rs. ${order["Total"]}</td>
 
-                <td>${order["Status"]}</td>
+                <td>
+
+                    <select
+                        onchange="updateOrderStatus(${order.id}, this.value)"
+                    >
+
+                        <option value="Pending"
+                            ${order["Status"] === "Pending" ? "selected" : ""}>
+                            Pending
+                        </option>
+
+                        <option value="Confirmed"
+                            ${order["Status"] === "Confirmed" ? "selected" : ""}>
+                            Confirmed
+                        </option>
+
+                        <option value="Shipped"
+                            ${order["Status"] === "Shipped" ? "selected" : ""}>
+                            Shipped
+                        </option>
+
+                        <option value="Delivered"
+                            ${order["Status"] === "Delivered" ? "selected" : ""}>
+                            Delivered
+                        </option>
+
+                        <option value="Cancelled"
+                            ${order["Status"] === "Cancelled" ? "selected" : ""}>
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </td>
 
             </tr>
 
@@ -127,8 +159,6 @@ async function loadOrders() {
     });
 
 }
-
-
 // ================================
 // LOGOUT
 // ================================
@@ -142,5 +172,30 @@ async function logoutAdmin() {
 
     document.getElementById("loginBox").style.display =
         "block";
+
+}
+async function updateOrderStatus(orderId, newStatus) {
+
+    const { error } =
+        await supabaseClient
+            .from("orders")
+            .update({
+                "Status": newStatus
+            })
+            .eq("id", orderId);
+
+
+    if (error) {
+
+        alert(
+            "Status update nahi hua:\n\n" +
+            error.message
+        );
+
+        return;
+    }
+
+
+    alert("Order status updated successfully!");
 
 }
