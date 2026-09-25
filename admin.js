@@ -4,7 +4,7 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
     "sb_publishable_tPLXDubPXbGFCaIVgnKSbw_tNA8APLT";
 
-const supabase =
+const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY
@@ -13,42 +13,42 @@ const supabase =
 async function loadOrders() {
 
     const { data, error } =
-        await supabase
+        await supabaseClient
             .from("orders")
             .select("*");
 
     if (error) {
 
-        console.error(error);
-
-        alert("Orders load nahi huay");
+        document.getElementById("ordersTable").innerHTML =
+            "<tr><td colspan='8'>Orders load nahi huay: " +
+            error.message +
+            "</td></tr>";
 
         return;
     }
 
-    let table =
-        document.getElementById(
-            "ordersTable"
-        );
+    const table =
+        document.getElementById("ordersTable");
 
     table.innerHTML = "";
 
     data.forEach(function(order) {
 
         table.innerHTML += `
+            <tr>
+                <td>${order.id}</td>
+                <td>${order["Customer Name"]}</td>
+                <td>${order["Phone"]}</td>
+                <td>${order["Address"]}</td>
+                <td>${order["Product"]}</td>
+                <td>${order["Quantity"]}</td>
+                <td>${order["Total"]}</td>
+                <td>${order["Status"]}</td>
+            </tr>
+        `;
 
-        <tr>
+    });
 
-            <td>${order.id}</td>
+}
 
-            <td>${order["Customer Name"]}</td>
-
-            <td>${order["Phone"]}</td>
-
-            <td>${order["Address"]}</td>
-
-            <td>${order["Product"]}</td>
-
-            <td>${order["Quantity"]}</td>
-
-            <td>${order["Total
+loadOrders();
