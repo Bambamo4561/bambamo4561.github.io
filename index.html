@@ -1,0 +1,363 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perfume by Haram</title>
+     <link rel="stylesheet" href="style.css">
+     
+</head>
+
+<body>
+
+    <!-- Website Header -->
+
+    <header>
+
+        <h1>Perfume by Haram</h1>
+
+        <p>Luxury Fragrances for Every Moment</p>
+
+    </header>
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+    <a href="#home">Home</a>
+
+    <a href="#collection">Collection</a>
+
+    <a href="#about">About</a>
+
+    </nav>
+
+
+    <!-- Home Section -->
+
+    <section id="home">
+
+        <h2>Discover Your Signature Scent</h2>
+
+        <p>
+            Welcome to Perfume by Haram.
+            Discover elegant and beautiful fragrances
+            created to make every moment memorable.
+        </p>
+
+      <button onclick="document.getElementById('collection').scrollIntoView({behavior: 'smooth'})">
+    Shop Now
+</button>
+
+    </section>
+
+
+    <!-- Collection -->
+<!-- Collection -->
+
+<section id="collection">
+
+    <h2>Our Collection</h2>
+
+    <div class="perfume-container">
+
+        <div class="perfume-card">
+
+            <img src="olive-blossom.jpg" alt="Olive Blossom Perfume">
+
+            <h3>Olive Blossom</h3>
+
+            <p>
+                A fresh and elegant floral fragrance inspired
+                by beautiful olive blossoms.
+            </p>
+
+            <p class="price">Rs. 3,500</p>
+
+            <button onclick="addToCart('Olive Blossom', 3500)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="perfume-card">
+
+            <img src="green-elegance.jpg" alt="Green Elegance Perfume">
+
+            <h3>Green Elegance</h3>
+
+            <p>
+                A sophisticated woody and fresh fragrance
+                with a modern character.
+            </p>
+
+            <p class="price">Rs. 4,000</p>
+
+            <button onclick="addToCart('Green Elegance', 4000)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="perfume-card">
+
+            <img src="velvet-bloom.jpg" alt="Velvet Bloom Perfume">
+
+            <h3>Velvet Bloom</h3>
+
+            <p>
+                A soft and luxurious floral fragrance with
+                sweet notes for special moments.
+            </p>
+
+            <p class="price">Rs. 4,500</p>
+
+            <button onclick="addToCart('Velvet Bloom', 4500)">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</section>    
+    <!-- About -->
+<section id="about">
+
+    <h2>About Perfume by Haram</h2>
+
+    <p class="about-intro">
+        Welcome to Perfume by Haram — a fragrance destination
+        created for people who believe that every scent tells
+        a story. Our collection brings together elegant,
+        refreshing and luxurious fragrances designed for
++        different personalities and memorable moments.
+    </p>
+    <div class="about-container">
+
+        <div class="about-box">
+
+            <h3>🌿 Our Story</h3>
+
+            <p>
+                Perfume by Haram was created with a simple idea:
+                to make beautiful fragrances accessible to
+                everyone. We believe perfume is more than just
+                a fragrance — it is a part of your personality,
+                confidence and everyday experience.
+            </p>
+
+        </div>
+ <div class="about-box">
+
+            <h3>✨ Our Collection</h3>
+
+            <p>
+                Our collection includes carefully presented
+                fragrances with different characters. From fresh
+                and floral scents to sophisticated and luxurious
+                aromas, there is something for every mood and
+                special occasion.
+            </p>
+
+        </div>
+<div class="about-box">
+
+            <h3>💚 Our Philosophy</h3>
+
+            <p>
+                We focus on elegance, simplicity and beautiful
+                presentation. Every fragrance is selected with
+                attention to its character so that your perfume
+                feels personal and special.
+            </p>
+
+        </div>
+ <div class="about-box">
+
+            <h3>🌸 For Every Moment</h3>
+
+            <p>
+                Whether you are getting ready for work, meeting
+                friends, attending a special event or simply
+                enjoying your day, the right fragrance can make
+                the moment feel even more memorable.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-values">
+
+        <h3>Why Choose Perfume by Haram?</h3>
+
+        <ul>
+
+            <li>🌿 Elegant and beautiful fragrances</li>
+
+            <li>✨ Carefully presented perfume collection</li>
+
+            <li>💚 Fragrances for different moods and occasions</li>
+
+            <li>🎁 Beautiful choices for gifting</li>
+
+            <li>💫 A simple and memorable shopping experience</li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="about-message">
+
+        <h3>Find Your Signature Scent</h3>
+
+        <p>
+            Your fragrance should feel like you.
+            Explore our collection and discover a scent
+            that becomes part of your story.
+        </p>
+
+    </div>
+
+</section>
+<!-- =========================
+     SIGNATURE SCENT
+========================= -->
+
+<section id="signature">
+
+    <div class="signature-content">
+
+        <p class="signature-small">
+            YOUR FRAGRANCE • YOUR STORY
+        </p>
+
+        <h2>
+            Discover Your
+            <span>Signature Scent</span>
+        </h2>
+
+        <p class="signature-text">
+            A beautiful fragrance is more than a scent.
+            It becomes a part of your personality, your mood
+            and the memories you create.
+        </p>
+
+        <button onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+            Explore Our Collection
+        </button>
+
+    </div>
+
+    <div class="signature-decoration">
+
+        <div class="gold-circle"></div>
+
+        <div class="floating-flower flower-one">✦</div>
+
+        <div class="floating-flower flower-two">✧</div>
+
+        <div class="floating-flower flower-three">✦</div>
+
+    </div>
+
+</section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h2>Perfume by Haram</h2>
+
+        <p>© 2026 Perfume by Haram</p>
+
+    </footer>
+    <!-- CART / ORDER INFORMATION -->
+
+<div id="cartPopup" class="order-overlay">
+
+    <div class="order-box">
+
+        <button class="close-cart" onclick="closeCart()">×</button>
+
+        <h2>🛒 Order Information</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+            <strong>Total:</strong>
+            <span id="cartTotal">Rs. 0</span>
+        </div>
+
+        <hr>
+
+        <h3>Customer Details</h3>
+
+        <form onsubmit="placeOrder(event)">
+
+            <label>Your Name</label>
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>Phone / WhatsApp</label>
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="03XX-XXXXXXX"
+                required
+            >
+            <label>Delivery Address</label> 
+<textarea 
+    id="customerAddress" 
+    placeholder="Enter your complete address" 
+    required
+></textarea>
+
+            <label>Payment Method</label>
+
+<select id="paymentMethod" required>
+    <option value="">Select payment method</option>
+    <option value="Cash on Delivery">Cash on Delivery</option>
+    <option value="Bank Transfer">Bank Transfer</option>
+</select>
+<div id="bankDetails" style="display: none; margin-top: 15px; padding: 15px; background: #e8f1df; border-radius: 10px;">
+
+    <strong>Bank Transfer Details</strong>
+
+    <p>Account Name: Perfume by Haram</p>
+    <p>Bank: Your Bank Name</p>
+    <p>Account Number: YOUR ACCOUNT NUMBER</p>
+    <p>IBAN: YOUR IBAN</p>
+
+    <small>
+        Bank transfer karne ke baad transaction/reference number WhatsApp par send karein.
+    </small>
+
+</div>
+
+            <button type="submit" class="place-order">
+                Place Order
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
