@@ -290,54 +290,38 @@ async function placeOrder(event) {
     // ============================
     // SUPABASE
     // ============================
-
-    const { error } =
-        await supabaseClient
-            .from("orders")
-            .insert([
-
-                {
-                    customer_name: name,
-
-                    phone: phone,
-
-                    address: address,
-
-                    product:
-                        orderedProducts.join(", "),
-
-                    quantity:
-                        totalQuantity,
-
-                    total:
-                        total,
-
-                    payment_method:
-                        paymentMethod,
-
-                    status:
-                        "Pending"
-                }
-
-            ]);
+const { data, error } = await supabaseClient
+    .from("orders")
+    .insert([
+        {
+            customer_name: name,
+            phone: phone,
+            address: address,
+            product: orderedProducts.join(", "),
+            quantity: totalQuantity,
+            total: total,
+            payment_method: paymentMethod,
+            status: "Pending"
+        }
+    ])
+    .select();
 
 
-    if (error) {
+if (error) {
 
-        console.error(
-            "Supabase Error:",
-            error
-        );
+    console.error("SUPABASE ERROR:", error);
 
-        alert(
-            "Order database mein save nahi hua.\n\n" +
-            "Please try again."
-        );
+    alert(
+        "SUPABASE ERROR:\n\n" +
+        error.message +
+        "\n\nCode: " +
+        error.code
+    );
 
-        return;
-    }
+    return;
+}
 
-
+console.log("ORDER SAVED:", data);
     // ============================
     // GOOGLE SHEETS
     // ============================
