@@ -1,18 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Admin Dashboard</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Perfume by Haram - Admin</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f1e8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .login-box {
+            max-width: 400px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #dashboard {
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #eee;
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-    <h1>Perfume by Haram - Admin Dashboard</h1>
 
-    <table border="1" cellpadding="10">
+<!-- LOGIN -->
+
+<div id="loginBox" class="login-box">
+
+    <h1>🌿 Admin Login</h1>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Admin Email"
+    >
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Password"
+    >
+
+    <button onclick="loginAdmin()">
+        Login
+    </button>
+
+    <p id="loginMessage"></p>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div id="dashboard">
+
+    <h1>Perfume by Haram - Orders Dashboard</h1>
+
+    <button onclick="logoutAdmin()">
+        Logout
+    </button>
+
+    <br><br>
+
+    <table>
 
         <thead>
+
             <tr>
+
                 <th>ID</th>
                 <th>Customer</th>
                 <th>Phone</th>
@@ -21,16 +126,24 @@
                 <th>Quantity</th>
                 <th>Total</th>
                 <th>Status</th>
+
             </tr>
+
         </thead>
 
         <tbody id="ordersTable">
+
         </tbody>
 
     </table>
 
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="admin.js"></script>
+
+<script src="admin.js?v=2"></script>
+
 
 </body>
 
