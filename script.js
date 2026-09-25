@@ -290,20 +290,22 @@ async function placeOrder(event) {
     // ============================
     // SUPABASE
     // ============================
+
 const { data, error } = await supabaseClient
     .from("orders")
     .insert([
         {
-            customer_name: name,
-            phone: phone,
-            address: address,
-            product: orderedProducts.join(", "),
-            quantity: totalQuantity,
-            total: total,
-            payment_method: paymentMethod,
-            status: "Pending"
+            "Customer Name": name,
+            "Phone": phone,
+            "Address": address,
+            "Product": orderedProducts.join(", "),
+            "Quantity": totalQuantity,
+            "Total": total,
+            "Payment Method": paymentMethod,
+            "Status": "Pending"
         }
-    ])
+    ]);
+
 if (error) {
 
     console.error("SUPABASE ERROR:", error);
