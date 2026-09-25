@@ -1,3 +1,4 @@
+```javascript
 const SUPABASE_URL =
     "https://yqhuqriynwcpitjujljb.supabase.co";
 
@@ -38,8 +39,10 @@ async function loginAdmin() {
 
     const { data, error } =
         await supabaseClient.auth.signInWithPassword({
+
             email: email,
             password: password
+
         });
 
 
@@ -54,11 +57,13 @@ async function loginAdmin() {
 
     console.log("ADMIN LOGIN SUCCESS");
 
+
     document.getElementById("loginBox").style.display =
         "none";
 
     document.getElementById("dashboard").style.display =
         "block";
+
 
     loadOrders();
 
@@ -68,6 +73,7 @@ async function loginAdmin() {
 // ================================
 // LOAD ORDERS
 // ================================
+
 async function loadOrders() {
 
     const { data, error } =
@@ -97,6 +103,17 @@ async function loadOrders() {
     table.innerHTML = "";
 
 
+    if (!data || data.length === 0) {
+
+        table.innerHTML =
+            "<tr><td colspan='8'>" +
+            "Abhi koi orders nahi hain." +
+            "</td></tr>";
+
+        return;
+    }
+
+
     data.forEach(function(order) {
 
         table.innerHTML += `
@@ -105,17 +122,17 @@ async function loadOrders() {
 
                 <td>${order.id}</td>
 
-                <td>${order["Customer Name"]}</td>
+                <td>${order["Customer Name"] || ""}</td>
 
-                <td>${order["Phone"]}</td>
+                <td>${order["Phone"] || ""}</td>
 
-                <td>${order["Address"]}</td>
+                <td>${order["Address"] || ""}</td>
 
-                <td>${order["Product"]}</td>
+                <td>${order["Product"] || ""}</td>
 
-                <td>${order["Quantity"]}</td>
+                <td>${order["Quantity"] || ""}</td>
 
-                <td>Rs. ${order["Total"]}</td>
+                <td>Rs. ${order["Total"] || 0}</td>
 
                 <td>
 
@@ -159,21 +176,12 @@ async function loadOrders() {
     });
 
 }
+
+
 // ================================
-// LOGOUT
+// UPDATE ORDER STATUS
 // ================================
 
-async function logoutAdmin() {
-
-    await supabaseClient.auth.signOut();
-
-    document.getElementById("dashboard").style.display =
-        "none";
-
-    document.getElementById("loginBox").style.display =
-        "block";
-
-}
 async function updateOrderStatus(orderId, newStatus) {
 
     const { error } =
@@ -187,15 +195,43 @@ async function updateOrderStatus(orderId, newStatus) {
 
     if (error) {
 
+        console.error(
+            "STATUS UPDATE ERROR:",
+            error
+        );
+
         alert(
             "Status update nahi hua:\n\n" +
-            error.message
+            error.message +
+            "\n\nCode: " +
+            error.code
         );
 
         return;
     }
 
 
-    alert("Order status updated successfully!");
+    alert(
+        "Order status updated successfully!"
+    );
+
+
+    loadOrders();
 
 }
+
+
+// ================================
+// LOGOUT
+// ================================
+
+async function logoutAdmin() {
+
+    await supabaseClient.auth.signOut();
+
+
+    document.getElementById("dashboard").style.display =
+        "none";
+
+
+```
