@@ -1,4 +1,3 @@
-
 const SUPABASE_URL =
     "https://yqhuqriynwcpitjujljb.supabase.co";
 
@@ -55,9 +54,6 @@ async function loginAdmin() {
     }
 
 
-    console.log("ADMIN LOGIN SUCCESS");
-
-
     document.getElementById("loginBox").style.display =
         "none";
 
@@ -88,7 +84,7 @@ async function loadOrders() {
     if (error) {
 
         document.getElementById("ordersTable").innerHTML =
-            "<tr><td colspan='8'>" +
+            "<tr><td colspan='10'>" +
             "Orders load nahi huay: " +
             error.message +
             "</td></tr>";
@@ -106,7 +102,7 @@ async function loadOrders() {
     if (!data || data.length === 0) {
 
         table.innerHTML =
-            "<tr><td colspan='8'>" +
+            "<tr><td colspan='10'>" +
             "Abhi koi orders nahi hain." +
             "</td></tr>";
 
@@ -116,57 +112,132 @@ async function loadOrders() {
 
     data.forEach(function(order) {
 
+
+        // DATE FORMAT
+
+        let orderDate = "";
+
+        if (order.created_at) {
+
+            orderDate =
+                new Date(
+                    order.created_at
+                ).toLocaleString();
+
+        }
+
+
         table.innerHTML += `
 
             <tr>
 
-                <td>${order.id}</td>
+                <td>
+                    ${order.id}
+                </td>
 
-                <td>${order["Customer Name"] || ""}</td>
 
-                <td>${order["Phone"] || ""}</td>
+                <td>
+                    ${orderDate}
+                </td>
 
-                <td>${order["Address"] || ""}</td>
 
-                <td>${order["Product"] || ""}</td>
+                <td>
+                    ${order["Customer Name"] || ""}
+                </td>
 
-                <td>${order["Quantity"] || ""}</td>
 
-                <td>Rs. ${order["Total"] || 0}</td>
+                <td>
+                    ${order["Phone"] || ""}
+                </td>
+
+
+                <td>
+                    ${order["Address"] || ""}
+                </td>
+
+
+                <td>
+                    ${order["Product"] || ""}
+                </td>
+
+
+                <td>
+                    ${order["Quantity"] || ""}
+                </td>
+
+
+                <td>
+                    Rs. ${order["Total"] || 0}
+                </td>
+
 
                 <td>
 
                     <select
-                        onchange="updateOrderStatus(${order.id}, this.value)"
+                        onchange="
+                            updateOrderStatus(
+                                ${order.id},
+                                this.value
+                            )
+                        "
                     >
 
-                        <option value="Pending"
-                            ${order["Status"] === "Pending" ? "selected" : ""}>
+                        <option
+                            value="Pending"
+                            ${order["Status"] === "Pending"
+                                ? "selected"
+                                : ""}
+                        >
                             Pending
                         </option>
 
-                        <option value="Confirmed"
-                            ${order["Status"] === "Confirmed" ? "selected" : ""}>
+
+                        <option
+                            value="Confirmed"
+                            ${order["Status"] === "Confirmed"
+                                ? "selected"
+                                : ""}
+                        >
                             Confirmed
                         </option>
 
-                        <option value="Shipped"
-                            ${order["Status"] === "Shipped" ? "selected" : ""}>
+
+                        <option
+                            value="Shipped"
+                            ${order["Status"] === "Shipped"
+                                ? "selected"
+                                : ""}
+                        >
                             Shipped
                         </option>
 
-                        <option value="Delivered"
-                            ${order["Status"] === "Delivered" ? "selected" : ""}>
+
+                        <option
+                            value="Delivered"
+                            ${order["Status"] === "Delivered"
+                                ? "selected"
+                                : ""}
+                        >
                             Delivered
                         </option>
 
-                        <option value="Cancelled"
-                            ${order["Status"] === "Cancelled" ? "selected" : ""}>
+
+                        <option
+                            value="Cancelled"
+                            ${order["Status"] === "Cancelled"
+                                ? "selected"
+                                : ""}
+                        >
                             Cancelled
                         </option>
 
                     </select>
 
+                </td>
+
+
+                <td>
+                    ${order["Payment Method"] || ""}
                 </td>
 
             </tr>
@@ -182,15 +253,24 @@ async function loadOrders() {
 // UPDATE ORDER STATUS
 // ================================
 
-async function updateOrderStatus(orderId, newStatus) {
+async function updateOrderStatus(
+    orderId,
+    newStatus
+) {
+
 
     const { error } =
         await supabaseClient
             .from("orders")
             .update({
+
                 "Status": newStatus
+
             })
-            .eq("id", orderId);
+            .eq(
+                "id",
+                orderId
+            );
 
 
     if (error) {
@@ -200,12 +280,14 @@ async function updateOrderStatus(orderId, newStatus) {
             error
         );
 
+
         alert(
             "Status update nahi hua:\n\n" +
             error.message +
             "\n\nCode: " +
             error.code
         );
+
 
         return;
     }
@@ -227,6 +309,7 @@ async function updateOrderStatus(orderId, newStatus) {
 
 async function logoutAdmin() {
 
+
     await supabaseClient.auth.signOut();
 
 
@@ -234,4 +317,8 @@ async function logoutAdmin() {
         "none";
 
 
+    document.getElementById("loginBox").style.display =
+        "block";
+
+}
 ```
