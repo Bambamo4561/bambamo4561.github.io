@@ -1,12 +1,23 @@
-
 // ================================
 // PERFUME BY HARAM
-// SHOPPING CART
+// SUPABASE + GOOGLE SHEETS + WHATSAPP
 // ================================
+
+const SUPABASE_URL =
+    "https://yqhuqriynwcpitjujljb.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_tPLXDubPXbGFCaIVgnKSbw_tNA8APLT";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
 // ================================
-// ALL 3 PRODUCTS
+// PRODUCTS
 // ================================
 
 let cart = [
@@ -39,55 +50,39 @@ let cart = [
 function addToCart(name, price) {
 
     let product = cart.find(function(item) {
-
         return item.name === name;
-
     });
 
-
     if (product) {
-
         product.quantity++;
-
     }
-
 
     updateCartCount();
 
     document.getElementById("cartPopup").style.display = "flex";
 
     displayCart();
-
 }
 
 
 // ================================
-// UPDATE CART NUMBER
+// CART COUNT
 // ================================
 
 function updateCartCount() {
 
     let count = 0;
 
-
     cart.forEach(function(product) {
-
-        count = count + product.quantity;
-
+        count += product.quantity;
     });
 
-
-    // Cart count element agar HTML mein ho
-
-    let cartCount = document.getElementById("cartCount");
-
+    let cartCount =
+        document.getElementById("cartCount");
 
     if (cartCount) {
-
         cartCount.innerText = count;
-
     }
-
 }
 
 
@@ -100,7 +95,6 @@ function showCart() {
     document.getElementById("cartPopup").style.display = "flex";
 
     displayCart();
-
 }
 
 
@@ -110,82 +104,79 @@ function showCart() {
 
 function displayCart() {
 
-    let cartItems = document.getElementById("cartItems");
+    let cartItems =
+        document.getElementById("cartItems");
 
-    let cartTotal = document.getElementById("cartTotal");
-
+    let cartTotal =
+        document.getElementById("cartTotal");
 
     cartItems.innerHTML = "";
 
-
     let total = 0;
-
 
     cart.forEach(function(product, index) {
 
-        let productTotal =
-            product.price * product.quantity;
+        if (product.quantity > 0) {
 
+            let productTotal =
+                product.price * product.quantity;
 
-        total = total + productTotal;
+            total += productTotal;
 
+            cartItems.innerHTML += `
 
-        cartItems.innerHTML += `
+                <div class="cart-item">
 
-            <div class="cart-item">
+                    <h3>${product.name}</h3>
 
-                <h3>${product.name}</h3>
+                    <p>
+                        Price: Rs. ${product.price}
+                    </p>
 
-                <p>
-                    Price: Rs. ${product.price}
-                </p>
+                    <p>
+                        Quantity:
 
+                        <button
+                            onclick="decreaseQuantity(${index})">
+                            −
+                        </button>
 
-                <p>
+                        <strong>
+                            ${product.quantity}
+                        </strong>
 
-                    Quantity:
+                        <button
+                            onclick="increaseQuantity(${index})">
+                            +
+                        </button>
+
+                    </p>
+
+                    <p>
+                        Product Total:
+                        Rs. ${productTotal}
+                    </p>
 
                     <button
-                        onclick="decreaseQuantity(${index})">
-                        −
+                        onclick="removeItem(${index})">
+                        Remove
                     </button>
 
+                    <hr>
 
-                    <strong>
-                        ${product.quantity}
-                    </strong>
+                </div>
 
-
-                    <button
-                        onclick="increaseQuantity(${index})">
-                        +
-                    </button>
-
-                </p>
-
-
-                <p>
-                    Product Total:
-                    Rs. ${productTotal}
-                </p>
-
-
-                <hr>
-
-            </div>
-
-        `;
+            `;
+        }
 
     });
 
-
     cartTotal.innerText = "Rs. " + total;
-
 }
 
 
 // ================================
-// INCREASE QUANTITY
+// INCREASE
 // ================================
 
 function increaseQuantity(index) {
@@ -195,32 +186,27 @@ function increaseQuantity(index) {
     updateCartCount();
 
     displayCart();
-
 }
 
 
 // ================================
-// DECREASE QUANTITY
+// DECREASE
 // ================================
 
 function decreaseQuantity(index) {
 
     if (cart[index].quantity > 0) {
-
         cart[index].quantity--;
-
     }
-
 
     updateCartCount();
 
     displayCart();
-
 }
 
 
 // ================================
-// REMOVE PRODUCT
+// REMOVE
 // ================================
 
 function removeItem(index) {
@@ -230,7 +216,6 @@ function removeItem(index) {
     updateCartCount();
 
     displayCart();
-
 }
 
 
@@ -241,164 +226,338 @@ function removeItem(index) {
 function closeCart() {
 
     document.getElementById("cartPopup").style.display = "none";
-
 }
 
 
 // ================================
 // PLACE ORDER
 // ================================
-function placeOrder(event) {
+
+async function placeOrder(event) {
 
     event.preventDefault();
 
-    let name = document.getElementById("customerName").value;
-    let phone = document.getElementById("customerPhone").value;
-    let address = document.getElementById("customerAddress").value;
-    let paymentMethod = document.getElementById("paymentMethod").value;
+    let name =
+        document.getElementById("customerName").value;
+
+    let phone =
+        document.getElementById("customerPhone").value;
+
+    let address =
+        document.getElementById("customerAddress").value;
+
+    let paymentMethod =
+        document.getElementById("paymentMethod").value;
+
 
     let orderedProducts = [];
+
     let totalQuantity = 0;
+
     let total = 0;
+
 
     cart.forEach(function(product) {
 
         if (product.quantity > 0) {
 
             orderedProducts.push(
-                product.name + " x " + product.quantity
+                product.name +
+                " x " +
+                product.quantity
             );
 
-            totalQuantity =
-                totalQuantity + product.quantity;
+            totalQuantity += product.quantity;
 
-            total =
-                total + (product.price * product.quantity);
+            total +=
+                product.price *
+                product.quantity;
         }
 
     });
 
+
     if (totalQuantity === 0) {
 
-        alert("Please select at least one perfume.");
+        alert(
+            "Please select at least one perfume."
+        );
 
         return;
     }
 
+
+    // ============================
+    // SUPABASE
+    // ============================
+
+    const { error } =
+        await supabaseClient
+            .from("orders")
+            .insert([
+
+                {
+                    customer_name: name,
+
+                    phone: phone,
+
+                    address: address,
+
+                    product:
+                        orderedProducts.join(", "),
+
+                    quantity:
+                        totalQuantity,
+
+                    total:
+                        total,
+
+                    payment_method:
+                        paymentMethod,
+
+                    status:
+                        "Pending"
+                }
+
+            ]);
+
+
+    if (error) {
+
+        console.error(
+            "Supabase Error:",
+            error
+        );
+
+        alert(
+            "Order database mein save nahi hua.\n\n" +
+            "Please try again."
+        );
+
+        return;
+    }
+
+
+    // ============================
+    // GOOGLE SHEETS
+    // ============================
+
     let orderData = {
 
         name: name,
+
         phone: phone,
+
         address: address,
-        products: orderedProducts.join(", "),
-        quantity: totalQuantity,
-        total: total,
-        paymentMethod: paymentMethod
+
+        products:
+            orderedProducts.join(", "),
+
+        quantity:
+            totalQuantity,
+
+        total:
+            total,
+
+        paymentMethod:
+            paymentMethod
     };
 
 
-    fetch("https://script.google.com/macros/s/AKfycbwKbuwT4wUWa8TGUWAjBECtATr0G74_f4lGlRwFDIt4M8VE43CWYt1jgNM9uF5kHvLn-Q/exec", {
+    fetch(
+        "https://script.google.com/macros/s/AKfycbwKbuwT4wUWa8TGUWAjBECtATr0G74_f4lGlRwFDIt4M8VE43CWYt1jgNM9uF5kHvLn-Q/exec",
+        {
+            method: "POST",
 
-        method: "POST",
+            body:
+                new URLSearchParams(orderData)
+        }
+    )
+    .catch(function(error) {
 
-        body: new URLSearchParams(orderData)
+        console.error(
+            "Google Sheets Error:",
+            error
+        );
 
-    })
+    });
 
-    .then(function() {
 
-    let whatsappNumber = "923112556930";
+    // ============================
+    // WHATSAPP
+    // ============================
+
+    let whatsappNumber =
+        "923112556930";
+
 
     let whatsappMessage =
+
         "🛍️ New Order - Perfume by Haram\n\n" +
-        "Customer: " + name + "\n" +
-        "Phone: " + phone + "\n" +
-        "Address: " + address + "\n\n" +
-        "Products: " + orderedProducts.join(", ") + "\n" +
-        "Total Quantity: " + totalQuantity + "\n" +
-        "Total Bill: Rs. " + total + "\n\n" +
-        "Payment: " + paymentMethod;
+
+        "Customer: " +
+        name +
+        "\n" +
+
+        "Phone: " +
+        phone +
+        "\n" +
+
+        "Address: " +
+        address +
+        "\n\n" +
+
+        "Products: " +
+        orderedProducts.join(", ") +
+        "\n" +
+
+        "Total Quantity: " +
+        totalQuantity +
+        "\n" +
+
+        "Total Bill: Rs. " +
+        total +
+        "\n\n" +
+
+        "Payment: " +
+        paymentMethod;
+
 
     let whatsappURL =
+
         "https://wa.me/" +
         whatsappNumber +
         "?text=" +
-        encodeURIComponent(whatsappMessage);
+        encodeURIComponent(
+            whatsappMessage
+        );
 
-    window.open(whatsappURL, "_blank");
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+
+    // ============================
+    // SUCCESS
+    // ============================
 
     alert(
         "Thank you " +
         name +
-        "!\n\nYour order has been received."
+        "!\n\n" +
+        "Your order has been received."
     );
 
-    document.getElementById("cartPopup").style.display = "none";
 
-    document.querySelector(".order-box form").reset();
+    document.getElementById(
+        "cartPopup"
+    ).style.display = "none";
 
-})
+
+    document
+        .querySelector(".order-box form")
+        .reset();
 
 
-    .catch(function(error) {
-
-        alert("Order could not be sent. Please try again.");
-
-        console.error(error);
-
+    cart.forEach(function(product) {
+        product.quantity = 0;
     });
 
+
+    updateCartCount();
+
+    displayCart();
 }
-document.getElementById("paymentMethod").addEventListener("change", function() {
 
-    let bankDetails = document.getElementById("bankDetails");
 
-    if (this.value === "Bank Transfer") {
+// ================================
+// PAYMENT METHOD
+// ================================
 
-        bankDetails.style.display = "block";
+document
+    .getElementById("paymentMethod")
+    .addEventListener(
+        "change",
+        function() {
 
-    } else {
+            let bankDetails =
+                document.getElementById(
+                    "bankDetails"
+                );
 
-        bankDetails.style.display = "none";
+            if (
+                this.value ===
+                "Bank Transfer"
+            ) {
 
-    }
+                bankDetails.style.display =
+                    "block";
 
-});
-/* =========================
-   PREMIUM 3D MOUSE EFFECT
-========================= */
+            } else {
 
-document.querySelectorAll(".perfume-card").forEach(card => {
+                bankDetails.style.display =
+                    "none";
+            }
 
-    card.addEventListener("mousemove", function(e) {
+        }
+    );
 
-        const rect = card.getBoundingClientRect();
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+// ================================
+// 3D PERFUME CARD EFFECT
+// ================================
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+document
+    .querySelectorAll(".perfume-card")
+    .forEach(function(card) {
 
-        const rotateY =
-            ((x - centerX) / centerX) * 8;
+        card.addEventListener(
+            "mousemove",
+            function(e) {
 
-        const rotateX =
-            ((centerY - y) / centerY) * 8;
+                const rect =
+                    card.getBoundingClientRect();
 
-        card.style.transform = `
-            perspective(1200px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            translateY(-15px)
-            scale(1.02)
-        `;
+                const x =
+                    e.clientX - rect.left;
+
+                const y =
+                    e.clientY - rect.top;
+
+                const centerX =
+                    rect.width / 2;
+
+                const centerY =
+                    rect.height / 2;
+
+                const rotateY =
+                    ((x - centerX) /
+                    centerX) * 8;
+
+                const rotateX =
+                    ((centerY - y) /
+                    centerY) * 8;
+
+                card.style.transform = `
+                    perspective(1200px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-15px)
+                    scale(1.02)
+                `;
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            function() {
+
+                card.style.transform = "";
+
+            }
+        );
+
     });
-
-    card.addEventListener("mouseleave", function() {
-
-        card.style.transform = "";
-
-    });
-
-});
