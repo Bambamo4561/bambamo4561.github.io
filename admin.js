@@ -1,4 +1,4 @@
-```javascript
+
 const SUPABASE_URL =
     "https://yqhuqriynwcpitjujljb.supabase.co";
 
