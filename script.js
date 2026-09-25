@@ -304,9 +304,6 @@ const { data, error } = await supabaseClient
             status: "Pending"
         }
     ])
-    .select();
-
-
 if (error) {
 
     console.error("SUPABASE ERROR:", error);
